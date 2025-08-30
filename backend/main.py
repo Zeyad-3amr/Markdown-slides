@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends  # pyright: ignore[reportMissingImports]
 from fastapi.middleware.cors import CORSMiddleware  # pyright: ignore[reportMissingImports]
-from fastapi.responses import HTMLResponse  # pyright: ignore[reportMissingImports]
+from fastapi.responses import HTMLResponse, FileResponse  # pyright: ignore[reportMissingImports]
+from fastapi.staticfiles import StaticFiles  # pyright: ignore[reportMissingImports]
 from pydantic import BaseModel  # pyright: ignore[reportMissingImports]
 from sqlalchemy.orm import Session  # pyright: ignore[reportMissingImports]
 import os
@@ -24,11 +25,16 @@ app = FastAPI(title="Markdown-to-Slides Agent", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://*.vercel.app"],
+    allow_origins=["http://localhost:3000", "https://*.vercel.app", "https://*.onrender.com"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount static files for frontend
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(static_dir):
+    app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 # Initialize OpenAI
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -483,8 +489,8 @@ I'll convert it into beautiful slides with theme suggestions. Try the "Demo" but
         "suggested_theme": theme_name
     }
 
-@app.get("/")
-async def root():
+@app.get("/api/")
+async def api_root():
     api_key = os.getenv("OPENAI_API_KEY")
     has_openai = api_key and api_key.startswith('sk-')
     
@@ -494,6 +500,18 @@ async def root():
         "openai_enabled": has_openai,
         "mode": "AI-powered" if has_openai else "Demo mode (rule-based responses)"
     }
+
+@app.get("/", response_class=FileResponse)
+async def serve_frontend():
+    """Serve the frontend HTML file"""
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
+    index_file = os.path.join(static_dir, "server", "app", "index.html")
+    
+    if os.path.exists(index_file):
+        return FileResponse(index_file, media_type="text/html")
+    else:
+        # Fallback to API response if frontend not found
+        return {"message": "Markdown-to-Slides Agent API - Frontend not built yet"}
 
 @app.get("/demo")
 async def demo_endpoint():

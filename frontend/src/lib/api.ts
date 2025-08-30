@@ -30,7 +30,7 @@ export const chatAPI = {
   },
 
   getStatus: async () => {
-    const response = await api.get('/');
+    const response = await api.get('/api/');
     return response.data;
   },
 

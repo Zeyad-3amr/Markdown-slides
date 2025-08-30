@@ -11,6 +11,7 @@ frontend/.next/
 frontend/out/
 frontend/build/
 backend/data/
+backend/static/
 *.db
 
 # Environment files

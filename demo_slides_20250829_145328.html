@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Slides</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Poppins, sans-serif;
+            background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+            overflow-x: hidden;
+        }
+        
+        .slide-container {
+            display: none;
+            min-height: 100vh;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .slide-container.active {
+            display: flex;
+        }
+        
+        .slide-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #7c3aed;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+        
+        .slide-content {
+            font-size: 1.5rem;
+            color: #ec4899;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .slide-content h3 {
+            color: #7c3aed;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        .slide-content ul {
+            text-align: left;
+            margin: 1rem 0;
+        }
+        
+        .slide-content li {
+            margin: 0.5rem 0;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .nav-btn {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #7c3aed;
+        }
+        
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .slide-content {
+                font-size: 1.2rem;
+            }
+            
+            .slide-container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">7</span>
+    </div>
+
+    <div class="slide-container active" data-slide="0">
+        <h1 class="slide-title">DataJar Coding Challenge</h1>
+        <div class="slide-content">
+            
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="1">
+        <h1 class="slide-title">The Mission</h1>
+        <div class="slide-content">
+            <p>Build a Markdown-to-Slides Agent that converts markdown into beautiful presentations.</p>
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="2">
+        <h1 class="slide-title">What I Built</h1>
+        <div class="slide-content">
+            <ul>
+<li>🎯 Smart slide generation from markdown</li>
+<li>🎨 3 beautiful themes (Professional, Creative, Minimal)</li>
+<li>💬 Chat interface with fallback responses</li>
+<li>📤 HTML export with navigation</li>
+<li>💾 Database storage for conversations</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="3">
+        <h1 class="slide-title">Tech Stack</h1>
+        <div class="slide-content">
+            <ul>
+<li><strong>Backend</strong>: FastAPI + SQLAlchemy + SQLite</li>
+<li><strong>Frontend</strong>: Next.js + Tailwind CSS + TypeScript</li>
+<li><strong>AI</strong>: OpenAI GPT-3.5 (with fallback mode)</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="4">
+        <h1 class="slide-title">Key Features</h1>
+        <div class="slide-content">
+            <ol>
+<li><strong>Works without AI</strong> - Smart fallback system</li>
+<li><strong>Production ready</strong> - Docker, deployment configs</li>
+<li><strong>Responsive design</strong> - Works on all devices</li>
+<li><strong>Real-time preview</strong> - See slides as you type</li>
+</ol>
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="5">
+        <h1 class="slide-title">Why This Rocks</h1>
+        <div class="slide-content">
+            <ul>
+<li>⚡ Fast development (4 hours total)</li>
+<li>🔧 Robust architecture with error handling</li>
+<li>📈 Scalable and extensible</li>
+<li>🎨 Beautiful UI/UX design</li>
+</ul>
+        </div>
+    </div>
+
+    <div class="slide-container " data-slide="6">
+        <h1 class="slide-title">Conclusion</h1>
+        <div class="slide-content">
+            <p>This agent showcases technical skill, business thinking, and the ability to ship fast!</p>
+<p><em>Built with hustler energy by someone who loves creating solutions</em> 🚀</p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prev-btn" onclick="changeSlide(-1)">← Previous</button>
+        <button class="nav-btn" id="next-btn" onclick="changeSlide(1)">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide-container').length;
+        
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide-container');
+            
+            if (n >= totalSlides) currentSlide = 0;
+            if (n < 0) currentSlide = totalSlides - 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides - 1;
+        }
+        
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') changeSlide(-1);
+            if (event.key === 'ArrowRight') changeSlide(1);
+        });
+        
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
