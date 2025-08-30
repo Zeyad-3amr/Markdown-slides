@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ChatRequest, ChatResponse, SlideTheme } from '@/types';
 
+// Use same domain for API calls in production, localhost for development
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:8001');
