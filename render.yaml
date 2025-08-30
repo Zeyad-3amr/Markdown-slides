@@ -4,10 +4,20 @@ services:
     name: markdown-slides-app
     env: python
     buildCommand: |
-      cd frontend && npm ci && npm run build && cd .. && 
+      echo "Building frontend..." && 
+      cd frontend && 
+      npm cache clean --force && 
+      npm install && 
+      npm run build && 
+      echo "Frontend built successfully" && 
+      cd .. && 
+      echo "Copying frontend to backend..." && 
       rm -rf backend/static && 
       cp -r frontend/.next backend/static && 
-      cd backend && pip install -r requirements.txt
+      echo "Installing Python dependencies..." && 
+      cd backend && 
+      pip install -r requirements.txt && 
+      echo "Build completed successfully"
     startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL
