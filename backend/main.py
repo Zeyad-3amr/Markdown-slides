@@ -34,6 +34,12 @@ app.add_middleware(
 # Mount static files for frontend
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 if os.path.exists(static_dir):
+    # Mount the Next.js _next directory for assets (CSS, JS)
+    next_dir = os.path.join(static_dir, "_next")
+    if os.path.exists(next_dir):
+        app.mount("/_next", StaticFiles(directory=next_dir), name="next_assets")
+    
+    # Mount other static files
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 # Initialize OpenAI
@@ -501,7 +507,7 @@ async def api_root():
         "mode": "AI-powered" if has_openai else "Demo mode (rule-based responses)"
     }
 
-@app.get("/", response_class=FileResponse)
+@app.get("/")
 async def serve_frontend():
     """Serve the frontend HTML file"""
     static_dir = os.path.join(os.path.dirname(__file__), "static")
