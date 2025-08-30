@@ -17,6 +17,8 @@ export default function SlidePreview({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const openInNewTab = () => {
+    if (typeof window === 'undefined') return;
+    
     const blob = new Blob([slidesHtml], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
     window.open(url, '_blank');

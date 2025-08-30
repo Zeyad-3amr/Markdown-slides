@@ -156,7 +156,7 @@ export default function Home() {
   };
 
   const downloadSlides = () => {
-    if (!currentSlides) return;
+    if (!currentSlides || typeof window === 'undefined') return;
 
     const blob = new Blob([currentSlides], { type: 'text/html' });
     const url = URL.createObjectURL(blob);
