@@ -505,7 +505,7 @@ async def api_root():
 async def serve_frontend():
     """Serve the frontend HTML file"""
     static_dir = os.path.join(os.path.dirname(__file__), "static")
-    index_file = os.path.join(static_dir, "server", "app", "index.html")
+    index_file = os.path.join(static_dir, "index.html")
     
     if os.path.exists(index_file):
         return FileResponse(index_file, media_type="text/html")
