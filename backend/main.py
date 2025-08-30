@@ -25,7 +25,12 @@ app = FastAPI(title="Markdown-to-Slides Agent", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://*.vercel.app", "https://*.onrender.com"],
+    allow_origins=[
+        "http://localhost:3000", 
+        "https://*.vercel.app", 
+        "https://*.onrender.com",
+        "https://twitter-clone-uxu1.onrender.com"  # Your specific deployed domain
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
