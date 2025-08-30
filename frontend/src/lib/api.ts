@@ -6,6 +6,12 @@ const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
   (typeof window !== 'undefined' ? window.location.origin : 'http://localhost:8001');
 
+// Debug: Log the API URL being used
+if (typeof window !== 'undefined') {
+  console.log('🔧 API_BASE_URL:', API_BASE_URL);
+  console.log('🌐 window.location.origin:', window.location.origin);
+}
+
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
